@@ -1,0 +1,1219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>テキストゲーム</title>
+
+<style>
+#side-bar.#main{float:left;height:500px;}
+#side-bar{wigth:260px;background:#990000;}
+</style>
+
+</head>
+<body>
+
+
+<h1>穂乃果ちゃんがなんかみんなとファイトするゲーム</h1>
+
+<div id="side-bar">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AdSense3 -->
+<ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-3667206696769133"
+    data-ad-slot="4219960409"
+    data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+<hr>
+<h2>story</h2>
+<div id="text_story"></div>
+<h2>state</h2>
+<div id="text_honostatus"></div>
+<div id="text_enemystatus"></div>
+<div id="text_storystatus"></div>
+<h2>select</h2>
+<div id="text_select"></div>
+<h2>result</h2>
+<div id="text_result"></div>
+
+<div id="text_result"></div>
+<div id="side-bar">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AdSense3 -->
+<ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-3667206696769133"
+    data-ad-slot="4219960409"
+    data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+// 初期設定
+// 初めはstoryNicoから。各キャラのストーリーを配列に格納
+var storyNico = new Array();
+storyNico[0] = ["とある日の昼休み。穂乃果の身(全員?)に悲劇が起きる・・・・・・<br>"];
+storyNico[1] = ["ほのか:無い!?私のパンが見当たらない!どこに行っちゃったのー!?<br>"];
+storyNico[2] = ["ほのか:・・・・・・は!?<br>"];
+storyNico[3] = ["ほのか:にこちゃん!?私の昼食用のパンを食べたでしょ!?<br>"];
+storyNico[4] = ["にこ:誤解よ!!食べてぬぁいわよ!!<br>"];
+storyNico[5] = ["ほのか:問答無用!!返してもらうよ!!<br>"];
+storyNico[6] = ["にこ:ぬぁんでよー!?!!<br>"];
+storyNico[7] = ["-------------------------------------------------------------------------------------<br>"];
+storyNico[8] = ["にこが現れた!!<br>"];
+storyNico[9] = ["にこ:どめどめどめー!!<br>"];
+
+var storySelect1 = new Array();
+storySelect1[0] = ["-------------------------------------------------------------------------------------<br>"];
+storySelect1[1] = ["ほのか:あれ?にこちゃんじゃなかったのかな?<br>"];
+storySelect1[2] = ["ほのか:じゃあ誰なんだろう?<br>"];
+storySelect1[3] = ["ほのか:ん?外から・・・・・・?<br>"];
+storySelect1[4] = ["<br>"];
+storySelect1[5] = ["<br>"];
+
+
+var storyKotori = new Array();
+storyKotori[0] = ["ことり:失礼します。あれ?穂乃果ちゃん?<br>"];
+storyKotori[1] = ["ことり:何を・・・やっているの?<br>"];
+storyKotori[2] = ["ほのか:いやぁ、昼食用のパンが無くなっちゃってさー<br>"];
+storyKotori[3] = ["ことり:あーそれなら・・・・・・<br>"];
+storyKotori[4] = ["ほのか:え?何か知っているの?<br>"];
+storyKotori[5] = ["ことり:今すぐ教えてーーーーー!!<br>"];
+storyKotori[6] = ["ことり:きゃあ!?ハノケチュン!?<br>"];
+storyKotori[7] = ["ことり:お腹空き過ぎて冷静さを失っている!?<br>"];
+storyKotori[8] = ["-------------------------------------------------------------------------------------<br>"];
+storyKotori[9] = ["ことりが現れた!!<br>"];
+storyKotori[10] = ["ことり:ことりのおやつにしちゃうぞ!!<br>"];
+
+
+var storyUmi = new Array();
+storyUmi[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyUmi[1] = ["ほのか:あれ?ことりちゃん?<br>"];
+storyUmi[2] = ["ほのか:気絶しちゃったのかな<br>"];
+storyUmi[3] = ["ほのか:せっかくパンのこと聞こうと思ったのになー<br>"];
+storyUmi[4] = ["うみ:穂乃果?・・・・・・あなたは何をやっているのですか?<br>"];
+storyUmi[5] = ["ほのか:ひっ・・・、嫌だなぁ海未ちゃんいきなり姿を現さないでよー<br>"];
+storyUmi[6] = ["ほのか:ちょっとパンがどこにあるのか尋ねていただけだよー<br>"];
+storyUmi[7] = ["うみ:ただ尋ねるだけでことりが気絶するわけ無いでしょ!!<br>"];
+storyUmi[8] = ["うみ:最低です!<br>"];
+storyUmi[9] = ["-------------------------------------------------------------------------------------<br>"];
+storyUmi[10] = ["うみが現れた!!<br>"];
+storyUmi[11] = ["うみ:覚悟は良いですね・・・・・・?<br>"];
+
+
+var storyHanayo = new Array();
+storyHanayo[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyHanayo[1] = ["はなよ:失礼します。あれ?穂乃果ちゃん?<br>"];
+storyHanayo[2] = ["はなよ:何をやっているの?<br>"];
+storyHanayo[3] = ["ほのか:いやぁ、昼食用のパンを無くしちゃってさー<br>"];
+storyHanayo[4] = ["はなよ:そ、そーなんだ。あ、白米ならあるry<br>"];
+storyHanayo[5] = ["ほのか:白米じゃなくてパンを頂戴ーーーーー!!<br>"];
+storyHanayo[6] = ["はなよ:きゃあ!?穂乃果ちゃん!?<br>"];
+storyHanayo[7] = ["はなよ:お腹空き過ぎて冷静さを失っている!?<br>"];
+storyHanayo[8] = ["-------------------------------------------------------------------------------------<br>"];
+storyHanayo[9] = ["はなよが現れた!!<br>"];
+storyHanayo[10] = ["はなよ:誰か助けてーーー!!<br>"];
+
+
+var storyMaki = new Array();
+storyMaki[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyMaki[1] = ["ほのか:あれ?花陽ちゃん?<br>"];
+storyMaki[2] = ["ほのか:気絶しちゃったのかな<br>"];
+storyMaki[3] = ["ほのか:せっかくパンを貰おうと思ったのになー<br>"];
+storyMaki[4] = ["まき:ちょっと穂乃果?・・・何をやっているのよ?<br>"];
+storyMaki[5] = ["ほのか:え、ちょっとパンを貰おうとしてただけだよー<br>"];
+storyMaki[6] = ["まき:ただ貰うだけで花陽が気絶する訳が無いでしょ!!<br>"];
+storyMaki[7] = ["まき:イミワカンナイ!<br>"];
+storyMaki[8] = ["-------------------------------------------------------------------------------------<br>"];
+storyMaki[9] = ["まきが現れた!!<br>"];
+storyMaki[10] = ["イミワカンナイ!!"];
+
+
+var storyRin = new Array();
+storyRin[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyRin[1] = ["りん:かよちーん、真姫ちゃーん、ついでににこちゃーん!!ご飯食べようにゃ!!<br>"];
+storyRin[2] = ["りん:って、なんじゃこりゃー!?<br>"];
+storyRin[3] = ["りん:穂乃果ちゃん!?これは一体どういうことにゃ?<br>"];
+storyRin[4] = ["ほのか:ちょっとお昼用のパンが無くなっちゃってさー・・・・・・<br>"];
+storyRin[5] = ["りん:なんで嘘つくにゃーーーー!!<br>"];
+storyRin[6] = ["-------------------------------------------------------------------------------------<br>"];
+storyRin[7] = ["りんが現れた!!<br>"];
+storyRin[8] = ["りん:にゃんにゃにゃんにゃにゃーん!!<br>"];
+
+var storyEri = new Array();
+storyEri[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyEri[1] = ["ほのか:まずいなー、凛ちゃんまで気絶しちゃったよー<br>"];
+storyEri[2] = ["ほのか:ちょっとパンを探していただけなのに・・・・・・<br>"];
+storyEri[3] = ["えり:穂乃果!?これは一体どういうことなの<br>"];
+storyEri[4] = ["ほのか:うわっ・・・・・・、次から次に・・・・・・。<br>"];
+storyEri[5] = ["ほのか:えっとね、ちょっとお昼用のパンが無くなっちゃってさー・・・・・・<br>"];
+storyEri[6] = ["えり:穂乃果・・・・・・。嘘は認められないわーーーーー!!<br>"];
+storyEri[7] = ["-------------------------------------------------------------------------------------<br>"];
+storyEri[8] = ["えりが現れた!!<br>"];
+storyEri[9] = ["えり:認められないわー<br>"];
+
+
+var storyNozomi = new Array();
+storyNozomi[0] = ["-------------------------------------------------------------------------------------<br>"];
+storyNozomi[1] = ["ほのか:はぁ、どんしてこんなことに・・・・・・<br>"];
+storyNozomi[2] = ["のぞみ:穂乃果ちゃん?うちのえりちに何をしているのかな?<br>"];
+storyNozomi[3] = ["ほのか:ひっ、違うの、お昼用のパンが・・・・・・<br>"];
+storyNozomi[4] = ["のぞみ:別に昼食用のパンを教室に置き忘れたのを覚えていなかったとかどうでもいいねん。<br>"];
+storyNozomi[5] = ["のぞみ:ただ、他の人にまで迷惑をかけるのはなぁ?<br>"];
+storyNozomi[6] = ["ほのか:えっ、教室に置き忘れた・・・・・・?<br>"];
+storyNozomi[7] = ["<br>"];
+storyNozomi[8] = ["ほのか:あ・・・・・・<br>"];
+storyNozomi[9] = ["<br>"];
+storyNozomi[10] = ["のぞみ:思い出した?<br>"];
+storyNozomi[11] = ["ほのか:うん、思い出した思い出した!!<br>"];
+storyNozomi[12] = ["のぞみ:そうか?よかったなー。<br>"];
+storyNozomi[13] = ["のぞみ:じゃあとりあえず、<br>"];
+storyNozomi[14] = ["<br>"];
+storyNozomi[15] = ["のぞみ:お仕置きを受けようか??<br>"];
+storyNozomi[16] = ["<br>"];
+storyNozomi[17] = ["ほのか:や、やばい。やられる!?<br>"];
+storyNozomi[18] = ["-------------------------------------------------------------------------------------<br>"];
+storyNozomi[19] = ["のぞみが現れた!!<br>"];
+storyNozomi[20] = ["のぞみ:おしおきやで!!<br>"];
+
+
+
+// キャラクター設定
+// 名前、HP、攻撃力、防御力の順に格納している
+var chara_skill = new Array();
+chara_skill[0] = ["ほのか", 250, 150, 150,];
+chara_skill[1] = ["にこ", 1000, 120, 120,];
+chara_skill[2] = ["ことり", 800, 100, 80,];
+chara_skill[3] = ["うみ", 1200, 150, 120,];
+chara_skill[4] = ["はなよ", 800, 120, 70,];
+chara_skill[5] = ["まき", 1000, 120, 70,];
+chara_skill[6] = ["りん", 1000, 250, 80,];
+chara_skill[7] = ["えり", 1200, 250, 200,];
+chara_skill[8] = ["のぞみ", 3000, 500, 500,];
+
+// 穂乃果のコマンド
+var HonokaCommand = new Array();
+HonokaCommand[0] = ["攻撃","ファイトだよ!","ランチパック","雨止めー!"];
+
+command_sel = 3; //戦闘の選択肢の数
+
+// ストーリーが進むごとにカウントされる
+var storycount = 1;
+
+// 一番最初に呼び出される
+FightReady(storycount);
+
+
+
+
+//初期設定
+function FightReady(storycount) 
+{
+    // storyを格納する変数
+    var story = "";
+
+    if(storycount == 1)
+    {
+    
+        chara_skill[0] = ["ほのか", 250, 150, 150,];
+        chara_skill[1] = ["にこ", 1000, 120, 120,];
+        chara_skill[2] = ["ことり", 800, 100, 80,];
+        chara_skill[3] = ["うみ", 1200, 150, 120,];
+        chara_skill[4] = ["はなよ", 800, 120, 70,];
+        chara_skill[5] = ["まき", 1000, 120, 70,];
+        chara_skill[6] = ["りん", 1000, 250, 80,];
+        chara_skill[7] = ["えり", 1200, 250, 200,];
+        chara_skill[8] = ["のぞみ", 3000, 500, 500,];
+    
+        for(i = 0; i < storyNico.length; i++)
+        {
+            story += storyNico[i] + "<br>";
+        }
+
+        //最初のストーリー
+        storyfirst(story, storycount);
+
+
+    }
+    else
+    {
+        switch(storycount)
+        {
+            case 2:
+                for(i = 0; i < storyKotori.length; i++)
+                {
+                    story += storyKotori[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+            case 3:
+                for(i = 0; i < storyUmi.length; i++)
+                {
+                    story += storyUmi[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+            case 4:
+                for(i = 0; i < storyHanayo.length; i++)
+                {
+                    story += storyHanayo[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+            case 5:
+                for(i = 0; i < storyMaki.length; i++)
+                {
+                    story += storyMaki[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+            case 6:
+                for(i = 0; i < storyRin.length; i++)
+                {
+                    story += storyRin[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+            case 7:
+                for(i = 0; i < storyEri.length; i++)
+                {
+                    story += storyEri[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+           case 8:
+                for(i = 0; i < storyNozomi.length; i++)
+                {
+                    story += storyNozomi[i] + "<br>";
+                }
+                storyfirst(story, storycount);
+                break;
+        }
+    }
+}
+
+//ストーリーと選択肢の表示
+function storyfirst(story, storycount) 
+{
+    var s = "Battle!!";
+    var resultword = "";
+
+    //ストーリー
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+    
+    document.getElementById("text_story").innerHTML = story + "<br>";
+
+    document.getElementById("text_storystatus").innerHTML = s;
+
+    SlectCommand(resultword, storycount);
+}
+
+// コマンド選択
+function SlectCommand(resultword, storycount)
+{
+var s = "";         // 選択肢
+
+    for (n=0; n<=command_sel; n++) 
+    {
+        if (HonokaCommand[0][n] != "") 
+        {
+            s += "【<a href='javascript:HonokaAct(" + n + "," + storycount + ")'>" + n + "：" + HonokaCommand[0][n] + "</a>】";
+        }    
+    }
+
+document.getElementById("text_select").innerHTML = s;
+
+document.getElementById("text_result").innerHTML = resultword + "<br>";
+}
+
+
+//穂乃果のアクション
+function HonokaAct(command, storycount) 
+{
+    var point;
+    var s = "";
+    var resultword = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[0][2] - chara_skill[storycount][3];
+            chara_skill[storycount][1] -= point;
+            s += chara_skill[0][0] + "の攻撃!!" + chara_skill[storycount][0] + "は" + point + "のダメージを負った!";
+            break;
+        case 1:
+            point = 100;
+            chara_skill[0][2] += point;
+            s += chara_skill[0][0] + "は「ファイトだよ」と叫んだ!!" + chara_skill[0][0]  + "の攻撃力が" + point + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[0][1] += point;
+            chara_skill[0][3] += point;
+            s += chara_skill[0][0] + "はランチパックを食べた!!" + chara_skill[0][0] + "のHPと防御力が" + point + "増加した";
+            break;
+        case 3:
+            point = 40;
+            chara_skill[0][2] += point;
+            chara_skill[0][1] += point;
+            chara_skill[storycount][2] -= point;
+            chara_skill[storycount][3] -= point - 10;
+            s += chara_skill[0][0] + "は「雨止めー!!」と叫んだ!" + chara_skill[0][0] + "の攻撃力とHPが" + point  + "増加した<br>" + chara_skill[storycount][0] + "はダメージを負った!";
+            break;
+
+    }
+
+    if((storycount == 7) || (storycount == 8))
+    {
+        s += "<br>";
+        var rnd1 = Math.floor(Math.random() * 4);
+        command = rnd1;
+
+        // 2回目のアクション
+        switch(command)
+        {
+            case 0:
+                point = chara_skill[0][2] - chara_skill[storycount][3];
+                chara_skill[storycount][1] -= point;
+                s += chara_skill[0][0] + "の攻撃!!" + chara_skill[storycount][0] + "は" + point + "のダメージを負った!";
+                break;
+            case 1:
+                point = 100;
+                chara_skill[0][2] += point;
+                s += chara_skill[0][0] + "は「ファイトだよ」と叫んだ!!" + chara_skill[0][0]  + "の攻撃力が" + point + "増加した";
+                break;
+            case 2:
+                point = 150;
+                chara_skill[0][1] += point;
+                chara_skill[0][3] += point;
+                s += chara_skill[0][0] + "はランチパックを食べた!!" + chara_skill[0][0] + "のHPと防御力が" + point + "増加した";
+                break;
+            case 3:
+                point = 40;
+                chara_skill[0][2] += point;
+                chara_skill[0][1] += point;
+                chara_skill[storycount][2] -= point;
+                chara_skill[storycount][3] -= point - 10;
+                s += chara_skill[0][0] + "は「雨止めー!!」と叫んだ!" + chara_skill[0][0] + "の攻撃力とHPが" + point  + "増加した" + chara_skill[storycount][0] + "はダメージを負った!";
+                break;
+        }
+    }
+
+
+    if ((chara_skill[storycount][1] <= 0) && (storycount < 8)) 
+    {
+        resultword += s + "<br>";
+        game_next(resultword, storycount); //続きに進む
+
+    }
+    else if(chara_skill[8][1] <= 0)
+    {
+        resultword += s + "<br>";
+        game_finish(resultword); //ゲームクリア 
+    }
+    else
+    {
+
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+        document.getElementById("text_story").innerHTML = "<br>";
+   
+        resultword += s + "<br>";
+
+        var rnd = Math.floor(Math.random() * 4);
+        // var rnd = Math.random() % 4;
+
+
+        switch(storycount)
+        {
+            case 1: NicoAct(rnd, resultword, storycount);
+                    break;
+            case 2: KotoriAct(rnd, resultword, storycount);
+                    break;
+            case 3: UmiAct(rnd, resultword, storycount);
+                    break;
+            case 4: HanayoAct(rnd, resultword, storycount);
+                    break;
+            case 5: MakiAct(rnd, resultword, storycount);
+                    break;
+            case 6: RinAct(rnd, resultword, storycount);
+                    break;
+            case 7: EriAct(rnd, resultword, storycount);
+                    break;
+            case 8: NozomiAct(rnd, resultword, storycount);
+                    break;        
+        }
+    }
+}
+
+// にこのアクション
+function NicoAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            s += chara_skill[storycount][0] + "の攻撃!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!";
+            break;
+        case 1:
+            point = 100;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "はトマトを食べた!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "は「にっこにこにー」をした!!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 60;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][1] += point;
+            chara_skill[0][3] -= point - 10;
+            s += chara_skill[storycount][0] + "は「どめどめどめー!!」と叫んだ!" + chara_skill[storycount][0] + "の攻撃力とHPが" + point  + "増加した<br>" + chara_skill[0][0] + "の防御力が下がった";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+// ことりのアクション
+function KotoriAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 30;
+            s += chara_skill[storycount][0] + "は「お願ぁい!!」と叫んだ!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!";
+            break;
+        case 1:
+            point = 50;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「チュンチュン」と叫んだ!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はチーズケーキを食べた!!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 40;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][1] += point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「ことりのおやつにしちゃうぞ」と諭した!" + chara_skill[storycount][0] + "の攻撃力とHPが" + point  + "増加した<br>" + chara_skill[0][0] + "の防御力が下がった";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+// 海未のアクション
+function UmiAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 60;
+            chara_skill[0][3] -= 60;
+            s += chara_skill[storycount][0] + "はラブアローシュートを放った!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した";
+            break;
+        case 1:
+            point = 80;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「山頂アタック」のテンションになった!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 100;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はほむらの饅頭を食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            if(chara_skill[0][1] >= charaskill[3][1])
+            {
+                point = (chara_skill[storycount][2] - chara_skill[0][3]) + 300;
+            }
+            else
+            {
+                point = chara_skill[storycount][2] - chara_skill[0][3];
+            }
+            chara_skill[0][1] -= point;
+            chara_skill[storycount][2] += 60;
+            chara_skill[0][2] -= 50;
+            chara_skill[0][3] -= 50;
+            s += chara_skill[storycount][0] + "は「最低ですっ!!」と叫びながら攻撃してきた!" + chara_skill[storycount][0] + "の攻撃力が" + "増加した<br>" + chara_skill[0][0] + "はダメージを負った!!<br>" + "攻撃力と防御力が下がった";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+// 花陽のアクション
+function HanayoAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 60;
+            s += chara_skill[storycount][0] + "は「誰か助けてーー!!」と叫んだ" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[0][0] + "の攻撃力が減少した<br>";
+            break;
+        case 1:
+            point = 100;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「ドゥ、ドゥームです!」とつぶやいた!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 250;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "は白米を食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][1] += point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "はアイドルの素晴らしさを説明しだした!" + chara_skill[storycount][0] + "の攻撃力とHPが" + "増加した<br>" + chara_skill[0][0] + "の防御力が減少した";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+// 真姫のアクション
+function MakiAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 50;
+            chara_skill[0][3] -= 50;
+            s += chara_skill[storycount][0] + "は「ナニソレイミワカンナイ」とつぶやいた!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + "攻撃力と防御力が減少した!";
+            break;
+        case 1:
+            point = 150;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「パパ」を呼んだ!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はトマトを食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][1] += point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は終わらないパーティを始めた!" + chara_skill[storycount][0] + "の攻撃力とHPが" + point  + "増加した<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+// 凛のアクション
+function RinAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    // 1回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            s += chara_skill[storycount][0] + "の攻撃!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!";
+            break;
+        case 1:
+            point = 40;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「テンション上がるにゃー!」と元気になった!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はラーメンを食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「ちょっと寒くないかにゃー」と呟いた!" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+    }
+
+    s += "<br>";
+    var rnd1 = Math.floor(Math.random() * 4);
+    command = rnd1;
+
+    // 2回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            s += chara_skill[storycount][0] + "の攻撃!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!";
+            break;
+        case 1:
+            point = 40;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「テンション上がるにゃー!」と元気になった!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はラーメンを食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「ちょっと寒くないかにゃー」と呟いた!" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+        document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+        document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+// 絵里のアクション
+function EriAct(command, resultword, storycount) 
+{
+    var rnd1 = Math.floor(Math.random() * 3);
+    command += rnd1;
+    var point;
+    var s = "";
+ 
+    // 1回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[storycount][1] += 150;
+            s += chara_skill[storycount][0] + "はKKEを唱えた!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[storycount][0] + "のHPが回復した";
+            break;
+        case 1:
+            point = 110;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「合宿よーー!!」と指示を出した!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 200;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はチョコレートを食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「認められないわー」と叫んだ!" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+        case 4:
+            point = 20;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 50;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は中二ポーズを取った!" + chara_skill[0][0] + "のHPと防御力が減少した" + "攻撃力は増加した";
+            break;
+        case 5:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][3] += point;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「ハラショー!!」と叫んだ!" + chara_skill[storycount][0] + "のHPと攻撃力と防御力が増加した<br>" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+    }
+
+    s += "<br>";
+    var rnd2 = Math.floor(Math.random() * 6);
+    command = rnd2;
+
+    // 2回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[storycount][1] += 150;
+            s += chara_skill[storycount][0] + "はKKEを唱えた!!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[storycount][0] + "のHPが回復した";
+            break;
+        case 1:
+            point = 110;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "は「合宿よーー!!」と指示を出した!!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 200;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "はチョコレートを食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            point = 30;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「認められないわー」と叫んだ!" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+        case 4:
+            point = 20;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 50;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は中二ポーズを取った!" + chara_skill[0][0] + "のHPと防御力が減少した" + "攻撃力は増加した";
+            break;
+        case 5:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            chara_skill[storycount][2] += point;
+            chara_skill[storycount][3] += point;
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= point;
+            chara_skill[0][3] -= point;
+            s += chara_skill[storycount][0] + "は「ハラショー!!」と叫んだ!" + chara_skill[storycount][0] + "のHPと攻撃力と防御力が増加した<br>" + chara_skill[0][0] + "のHPと攻撃力と防御力が減少した";
+            break;
+    }
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+// 希のアクション
+function NozomiAct(command, resultword, storycount) 
+{
+    var point;
+    var s = "";
+
+    // 1回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 20;
+            chara_skill[0][2] -= 20;
+            s += chara_skill[storycount][0] + "は正体不明の攻撃を放った!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した!";
+            break;
+        case 1:
+            point = 150;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "はスピリチュアルパワーをたっぷり注入した!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "は焼肉を食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            if(chara_skill[0][1] >= charaskill[8][1])
+            {
+                point = (chara_skill[storycount][2] - chara_skill[0][3]) + 1500;
+            }
+            else
+            {
+                point = chara_skill[storycount][2] - chara_skill[0][3];
+            }
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 30;
+            chara_skill[0][3] -= 20;
+            s += chara_skill[storycount][0] + "はわしわしMAXをした!" + chara_skill[0][0] + "はダメージを負った<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した";
+            break;
+    }
+
+    s += "<br>";
+    var rnd1 = Math.floor(Math.random() * 4);
+    command = rnd1;
+
+
+    // 2回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 20;
+            chara_skill[0][2] -= 20;
+            s += chara_skill[storycount][0] + "は正体不明の攻撃を放った!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した!";
+            break;
+        case 1:
+            point = 150;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "はスピリチュアルパワーをたっぷり注入した!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "は焼肉を食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            if(chara_skill[0][1] >= charaskill[8][1])
+            {
+                point = (chara_skill[storycount][2] - chara_skill[0][3]) + 1500;
+            }
+            else
+            {
+                point = chara_skill[storycount][2] - chara_skill[0][3];
+            }
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 30;
+            chara_skill[0][3] -= 20;
+            s += chara_skill[storycount][0] + "はわしわしMAXをした!" + chara_skill[0][0] + "はダメージを負った<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した";
+            break;
+    }
+
+    s += "<br>";
+    var rnd2 = Math.floor(Math.random() * 4);
+    command = rnd2;
+
+    // 3回目のアクション
+    switch(command)
+    {
+        case 0:
+            point = chara_skill[storycount][2] - chara_skill[0][3];
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 20;
+            chara_skill[0][2] -= 20;
+            s += chara_skill[storycount][0] + "は正体不明の攻撃を放った!" + chara_skill[0][0] + "は" + point  + "のダメージを負った!<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した!";
+            break;
+        case 1:
+            point = 150;
+            chara_skill[storycount][2] += point;
+            s += chara_skill[storycount][0] + "はスピリチュアルパワーをたっぷり注入した!" + chara_skill[storycount][0] + "の攻撃力が" + point  + "増加した";
+            break;
+        case 2:
+            point = 150;
+            chara_skill[storycount][1] += point;
+            s += chara_skill[storycount][0] + "は焼肉を食べた!" + chara_skill[storycount][0] + "のHPが" + point  + "増加した";
+            break;
+        case 3:
+            if(chara_skill[0][1] >= charaskill[8][1])
+            {
+                point = (chara_skill[storycount][2] - chara_skill[0][3]) + 1500;
+            }
+            else
+            {
+                point = chara_skill[storycount][2] - chara_skill[0][3];
+            }
+            chara_skill[0][1] -= point;
+            chara_skill[0][2] -= 30;
+            chara_skill[0][3] -= 20;
+            s += chara_skill[storycount][0] + "はわしわしMAXをした!" + chara_skill[0][0] + "はダメージを負った<br>" + chara_skill[0][0] + "の攻撃力と防御力が減少した";
+            break;
+    }
+
+
+    if (chara_skill[0][1] <= 0) 
+    {
+        resultword += s + "<br>";
+        game_over(resultword); //ゲームオーバー
+
+    }
+    else
+    {
+    document.getElementById("text_honostatus").innerHTML = chara_skill[0][0] + "<br>" + "HP:" + chara_skill[0][1] + "<br>" + "攻撃力:" + chara_skill[0][2] + "<br>" + "防御力:" + chara_skill[0][3] + "<br><br>";
+    document.getElementById("text_enemystatus").innerHTML = chara_skill[storycount][0] + "<br>" + "HP:" + chara_skill[storycount][1] + "<br>" + "攻撃力:" + chara_skill[storycount][2] + "<br>" + "防御力:" + chara_skill[storycount][3] + "<br><br>";
+
+
+
+        document.getElementById("text_story").innerHTML = "<br>";
+        
+        resultword += s + "<br>";
+    
+        SlectCommand(resultword, storycount);
+    }
+}
+
+
+
+function game_next(resultword, storycount) 
+{
+    var s;
+    var n = "";
+
+    if(storycount == 1)
+    {
+        storycount += 1;
+        var story;
+        s = "あなたの勝ち!!<br>";
+
+        
+        for(i = 0; i < storySelect1.length; i++)
+        {
+            story += storySelect1[i] + "<br>";
+        }
+
+        document.getElementById("text_story").innerHTML = story + "<br>";
+     
+        document.getElementById("text_storystatus").innerHTML = s;
+    
+        //ことりか花陽か最初からかを選択する 
+    
+        n += "【<a href='javascript:FightReady(" + storycount  + ")'>ことりちゃんの声が聞こえる?</a>】<br>";
+        n += "【<a href='javascript:FightReady(" + 4 + ")'>花陽ちゃんの声が聞こえる?</a>】<br>";
+        n += "【<a href='javascript:FightReady(" + 1 + ")'>最初から始める</a>】<br>";
+    
+        document.getElementById("text_select").innerHTML = n;
+    
+    }
+    else if(storycount == 3)
+    {
+        storycount += 3;
+          
+        s = "あなたの勝ち!!<br>";
+     
+        document.getElementById("text_storystatus").innerHTML = s;
+    
+        //続きか最初からかを選択する 
+    
+        n += "【<a href='javascript:FightReady(" + storycount  + ")'>続きを始める</a>】<br>";
+        n += "【<a href='javascript:FightReady(" + 1 + ")'>最初から始める</a>】<br>";
+    
+        document.getElementById("text_select").innerHTML = n;
+        document.getElementById("text_result").innerHTML = resultword + "<br>";
+    }
+    else
+    {
+        storycount += 1;
+          
+        s = "あなたの勝ち!!<br>";
+     
+        document.getElementById("text_storystatus").innerHTML = s;
+    
+        //続きか最初からかを選択する 
+    
+        n += "【<a href='javascript:FightReady(" + storycount  + ")'>続きを始める</a>】<br>";
+        n += "【<a href='javascript:FightReady(" + 1 + ")'>最初から始める</a>】<br>";
+    
+        document.getElementById("text_select").innerHTML = n;
+        document.getElementById("text_result").innerHTML = resultword + "<br>";
+    }
+}
+
+
+function game_finish(resultword) 
+{
+    var s;
+    var n = "";
+          
+    s = "おめでとうございます!!<br>" + "あなたの勝ち!!<br>" + "ゲームクリアです<br>";
+     
+    document.getElementById("text_storystatus").innerHTML = s;
+    
+    //最初からやり直し 
+    
+    n += "【<a href='javascript:FightReady(" + 1 + ")'>同じゲームを最初から始める</a>】";
+    
+    document.getElementById("text_select").innerHTML = n;
+    document.getElementById("text_result").innerHTML = resultword + "<br>";
+}
+
+
+function game_over(resultword) 
+{
+    var s;
+    var n = "";
+          
+    s = "あなたの負け<br>" + "ゲームオーバー<br>";
+        
+    document.getElementById("text_storystatus").innerHTML = s;
+    
+    //最初からやり直し 
+    
+    n += "【<a href='javascript:FightReady(" + 1 + ")'>最初から始める</a>】";
+    
+    document.getElementById("text_select").innerHTML = n;
+    document.getElementById("text_result").innerHTML = resultword + "<br>";
+}
+</script>
+</body>
+</html>
+
